@@ -1,8 +1,11 @@
-import { Button } from "./components/ui/button"
 
+import { Route, Routes } from "react-router-dom"
+import { Auth } from "@/pages/Auth/Auth"
 function App() {
   return (
-    <Button>Clickme</Button>
+    <Routes>
+      <Route path="/auth" element= {<Auth/>} />
+    </Routes>
   )
 }
 
