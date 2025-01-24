@@ -2,12 +2,12 @@ import axios from '@/config/axiosConfig'
 
 export const signUpRequest = async({email, password, username}) => {
     try {
-        const response = axios.post('/users/signup',{
+        const response = await axios.post('/users/signup',{
             email,
             password,
             username
         });
-
+        console.log('signup response',response);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -17,10 +17,12 @@ export const signUpRequest = async({email, password, username}) => {
 
 export const signInRequest = async({email, password}) => {
     try {
-        const response = axios.post('/users/signin', {
+        const response = await axios.post('/users/signin', {
             email,
             password
         })
+
+        console.log('signin response', response)
 
         return response.data;
 

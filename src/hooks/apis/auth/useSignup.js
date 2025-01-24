@@ -6,8 +6,8 @@ export const useSignup = () => {
     const { toast }= useToast();
     const { isPending, isSuccess, error, mutateAsync: signupMutation} = useMutation({
         mutationFn: signUpRequest,
-        onSuccess: (data) => {
-            console.log('signup successfully', data);
+        onSuccess: (response) => {
+            console.log('signup successfully', response);
             toast({
                 title:'successfully signedup',
                 message: 'you will be directed to signin page in a few seconds',
@@ -15,7 +15,7 @@ export const useSignup = () => {
             })
         },
         onError: (error) => {
-            console.log('failsd to signup', error);
+            console.log('failed to signup', error);
             toast({
                 title: 'Failed to sign up',
                 message: error.message,
