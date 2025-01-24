@@ -2,7 +2,7 @@ import { useAuth } from "@/hooks/context/useAuth"
 import { LucideLoader2 } from "lucide-react";
 import { Navigate } from "react-router-dom";
 
-export const ProctectedRoute = ({children}) => {
+export const ProtectedRoute = ({children}) => {
     const { auth } = useAuth();
 
     if(auth.isLoading) {
