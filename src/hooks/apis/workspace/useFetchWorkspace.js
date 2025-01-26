@@ -11,6 +11,8 @@ export const useFetchWorkspace = () => {
         staleTime: 30000
     })
 
+    console.log('workspaces', workspaces)
+
     return {
         isFetching,
         isSuccess,
