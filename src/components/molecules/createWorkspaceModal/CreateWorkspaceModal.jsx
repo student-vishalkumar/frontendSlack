@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { useCreateWorkspace } from "@/hooks/apis/workspace/useCreateWorkspace";
 import { useCreateWorkspaceModal } from "@/hooks/context/useCreateWorkspaceModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const CreateWorkspaceModal = () => {
@@ -32,16 +32,25 @@ export const CreateWorkspaceModal = () => {
     }
 
     function handleClose() {
-        setOpenCreateWorkspaceModal(false);
+            setOpenCreateWorkspaceModal(false);
     }
+
+    // useEffect(() => {
+    //     if (!openCreateWorkspaceModal) {
+    //         document.body.style.pointerEvents = "auto"; // Reset to auto when modal closes
+    //     }
+    // }, [openCreateWorkspaceModal]);
+
     return (
         <Dialog
         open={openCreateWorkspaceModal}
         onOpenChange={handleClose}
+        modal={false}
         >
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>Create a Workspace</DialogTitle>
+                    <DialogDescription>create</DialogDescription>
                 </DialogHeader>
             
 

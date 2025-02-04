@@ -31,7 +31,7 @@ export const UserButton = () => {
     }
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger className="outline-none relative">
+            <DropdownMenuTrigger className="outline-none relative" asChild>
                 <Avatar className="size-10 hover:opacity-65 transition">
                     <AvatarImage src={auth?.user?.avatar}/>
                     <AvatarFallback>{auth?.user?.username[0].toUpperCase()}</AvatarFallback>
