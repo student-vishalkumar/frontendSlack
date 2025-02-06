@@ -13,7 +13,11 @@ export const WorkspacePanelHeader = ({workspace}) => {
 
     const isLoggedinUserIsAdmin = workspaceMembers?.find((member) => member.memberId === auth?.user?._id && member.role === 'admin');
 
-    const {setOpenPreferences, setInitialValue, openPreferences} = useWorkspacePreferencesModal();
+    const {setOpenPreferences, setInitialValue, setWorkspace} = useWorkspacePreferencesModal();
+
+    useEffect(() => {
+        setWorkspace(workspace);
+    }, []);
 
     return (
         <div className='flex items-center justify-between px-4 h-[50px] gap-0.5'>

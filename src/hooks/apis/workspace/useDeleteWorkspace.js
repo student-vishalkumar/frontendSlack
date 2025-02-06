@@ -6,7 +6,7 @@ export const useDeleteWorkspace = (workspaceId) => {
 
     const {auth} = useAuth();
 
-    const {isPending, isSuccess, error, mutationAsync: deleteWorkspaceMutation} = useMutation({
+    const {isPending, isSuccess, error, mutateAsync: deleteWorkspaceMutation} = useMutation({
         mutationFn: () => deleteWorkspaceRequest({workspaceId, token: auth?.token}),
 
         onSuccess: () => {

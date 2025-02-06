@@ -1,11 +1,15 @@
 import { UserButton } from "@/components/atoms/UserButton/UserButton"
+
 import { useFetchWorkspace } from "@/hooks/apis/workspace/useFetchWorkspace"
+import { useCreateWorkspaceModal } from "@/hooks/context/useCreateWorkspaceModal";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Home = ()=> {
 
     const { isFetching, isSuccess, error, workspaces} = useFetchWorkspace();
+
+    const { setOpenCreateWorkspaceModal } = useCreateWorkspaceModal();
 
     const navigate = useNavigate();
     
@@ -18,6 +22,7 @@ export const Home = ()=> {
 
         if(workspaces.length === 0 || !workspaces) {
             console.log('No workspace found , creating one');
+            setOpenCreateWorkspaceModal(true);
         } else {
             navigate(`/workspaces/${workspaces[0]._id}`);
         }
