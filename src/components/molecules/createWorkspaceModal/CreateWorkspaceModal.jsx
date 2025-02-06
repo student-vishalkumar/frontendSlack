@@ -3,12 +3,15 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Input } from "@/components/ui/input"
 import { useCreateWorkspace } from "@/hooks/apis/workspace/useCreateWorkspace";
 import { useCreateWorkspaceModal } from "@/hooks/context/useCreateWorkspaceModal";
+import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const CreateWorkspaceModal = () => {
 
     const navigate = useNavigate();
+
+    const queryClient = useQueryClient();
 
     const [workspaceName, setWorkspaceName] = useState('');
 
@@ -22,7 +25,8 @@ export const CreateWorkspaceModal = () => {
         try {
             const data = await createWorkspaceMutation({name: workspaceName});
             console.log('data workspace', data)
-            navigate(`/workspaces/${data._id}`)
+            navigate(`/workspaces/${data._id}`);
+            queryClient.invalidateQueries('fetchWorkspaces');
         } catch(error) {
             console.log('not able to create Workspace', error);
         } finally{
