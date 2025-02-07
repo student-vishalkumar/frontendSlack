@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useDeleteWorkspace } from "@/hooks/apis/workspace/useDeleteWorkspace";
 import { useUpdateWorkspace } from "@/hooks/apis/workspace/useUpdateWorkspace";
+import { useConfirmation } from "@/hooks/context/useConfirmation";
 import { useWorkspacePreferencesModal } from "@/hooks/context/useWorkspacePreferencesModal";
 import { useToast } from "@/hooks/use-toast";
 import { Title } from "@radix-ui/react-dialog";
@@ -30,6 +31,10 @@ export const WorkspacePreferenceModal = () => {
   const [editOpen, setEditOpen] = useState(false);
 
   const [renameValue, setRenameValue] = useState(workspace?.name);
+
+  const {Confirmation, ConfirmDialog} = useConfirmation({title: 'Do you want to delete the workspace', message: 'This action can not be undone'});
+
+  const {Confirmation: ConfirmFun, ConfirmDialog: ConfirmDial} = useConfirmation({title: 'Do you want to update the workspace', message: 'This action can not be undone'})
 
   const { toast } = useToast();
   const { deleteWorkspaceMutation } = useDeleteWorkspace(workspaceId);
@@ -50,6 +55,11 @@ export const WorkspacePreferenceModal = () => {
 
   async function handleDelete() {
     try {
+      const ok = await Confirmation();
+      console.log('ok')
+      if(!ok) {
+        return
+      }
       await deleteWorkspaceMutation();
       navigate("/home");
       queryClient.invalidateQueries("fetchWorkspaces");
@@ -71,7 +81,10 @@ export const WorkspacePreferenceModal = () => {
     e.preventDefault();
 
     try {
-      
+      const ok = await ConfirmFun();
+      if(!ok) {
+        return;
+      }
       await updateWorkspaceMutation(renameValue);
       
       queryClient.invalidateQueries(`fetchWorkspaceById-${workspace?._id}`);
@@ -88,6 +101,9 @@ export const WorkspacePreferenceModal = () => {
   }
 
   return (
+    <>
+    <ConfirmDialog/>
+    <ConfirmDial/>
     <Dialog open={openPreferences} onOpenChange={handleClose}>
       <DialogContent>
         <DialogHeader>
@@ -153,5 +169,6 @@ export const WorkspacePreferenceModal = () => {
         </div>
       </DialogContent>
     </Dialog>
+    </>
   );
 };
