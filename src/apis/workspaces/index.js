@@ -28,7 +28,6 @@ export const fetchWorkspacesRequest = async({token}) => {
             }
         });
 
-        console.log('fetched workspaces', response);
 
         return response?.data?.data;
     } catch (error) {
@@ -46,7 +45,6 @@ export const fetchWorkspaceByWorkspaceId = async({workspaceId, token}) => {
             }
         })
 
-        console.log('fetched workspace By id', response?.data?.data);
 
         return response?.data?.data;
     } catch (error) {
