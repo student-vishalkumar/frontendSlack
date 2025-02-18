@@ -1,12 +1,16 @@
 import { SideBarItem } from "@/components/atoms/sideBarItem/SideBarItem";
 import { WorkspacePanelHeader } from "@/components/molecules/Workspace/WorkspacePanelHeader";
+import { WorkspacePanelSection } from "@/components/molecules/Workspace/WorkspacePanelSection";
 import { useGetWorkspaceById } from "@/hooks/apis/workspace/useGetWorkspaceById";
-import { AlertTriangleIcon, Loader, MessageSquareTextIcon} from "lucide-react";
+import { useCreateChannelModal } from "@/hooks/context/useCreateChannelModal";
+import { AlertTriangleIcon, HashIcon, Loader, MessageSquareTextIcon, SendHorizonalIcon} from "lucide-react";
 import { useParams } from "react-router-dom"
 
 export const WorkspacePanel = () => {
 
     const { workspaceId } = useParams();
+
+    const { setOpenCreateChannelModal } = useCreateChannelModal();
 
     const { workspace, isFetching, isSuccess} = useGetWorkspaceById(workspaceId);
 
@@ -33,19 +37,31 @@ export const WorkspacePanel = () => {
         <div className="flex flex-col h-full bg-slack-medium">
             <WorkspacePanelHeader workspace={workspace}/>
             <div
-            className="flex flex-col px-2 mt-3"
+            className="flex flex-col px-2 mt-3 gap-3"
             >
-            {workspace?.channels.map((channel) => {
-                return (
-                    <SideBarItem
-                    label={channel?.name}
-                    icon={MessageSquareTextIcon}
-                    id="threads"
-                    variant='active'
-                /> 
-                )
-            })}
+            <SideBarItem 
+                label="Threads"
+                icon={MessageSquareTextIcon}
+                id="threads"
+                variant='active'
+            />
+
+            <SideBarItem 
+                label="Drafts and Send"
+                icon={SendHorizonalIcon}
+                id="drafts"
+                variant='active'
+            />
             </div>
+
+            <WorkspacePanelSection
+            label={'Channels'}
+            onIconClick={() => {setOpenCreateChannelModal(true)}}
+            >
+                {workspace?.channels?.map((channel) => {
+                    return <SideBarItem key={channel._id} icon={HashIcon} label={channel.name} id={channel._id}/>;
+                })}
+            </WorkspacePanelSection>
         </div>
     )
 }

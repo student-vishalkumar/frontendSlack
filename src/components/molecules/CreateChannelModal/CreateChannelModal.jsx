@@ -18,6 +18,8 @@ export const CreateChannelModal = () => {
   function handleClose() {
     setOpenCreateChannelModal(false);
   }
+
+  
   return (
     <Dialog
     open={openCreateChannelModal}
