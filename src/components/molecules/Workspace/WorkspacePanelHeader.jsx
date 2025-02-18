@@ -12,7 +12,7 @@ export const WorkspacePanelHeader = ({workspace}) => {
     const { auth } = useAuth();
 
 
-    const isLoggedinUserIsAdmin = workspaceMembers?.find(member => member.memberId?._id === auth?.user?._id && member.role === 'admin');
+    const isLoggedinUserIsAdmin = workspaceMembers?.find(member => member.memberId._id === auth?.user?._id && member.role === 'admin');
 
     const {setOpenPreferences, setInitialValue, setWorkspace} = useWorkspacePreferencesModal();
 
