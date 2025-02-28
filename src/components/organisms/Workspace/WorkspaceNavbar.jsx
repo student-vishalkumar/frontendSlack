@@ -8,20 +8,26 @@ import { useParams } from "react-router-dom";
 export const WorkspaceNavbar = () => {
   const { workspaceId } = useParams();
 
+  console.log('worskid', workspaceId);
   const { isFetching, workspace } = useGetWorkspaceById(workspaceId);
 
-  const {currentWorkspace, setCurrentWorkspace} = useCurrentWorkspace();
+  const { currentWorkspace, setCurrentWorkspace } = useCurrentWorkspace();
 
   useEffect(() => {
-    if(workspace) {
-      setCurrentWorkspace(workspace);
-    }
-  }, [workspace, setCurrentWorkspace])
+        if(workspace) {
+            console.log('ws in ue', workspace);
+            setCurrentWorkspace(workspace);
+        }
+    }, [workspace, setCurrentWorkspace]);
 
+  console.log('cws', currentWorkspace);
+  
 
   if (isFetching) {
     return <LucideLoader2 className="animate-spin ml-2" />;
   }
+
+  
 
   return (
     <nav className="flex items-center justify-center h-10 p-1.5 bg-slack-dark">

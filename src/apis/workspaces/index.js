@@ -45,7 +45,7 @@ export const fetchWorkspaceByWorkspaceId = async({workspaceId, token}) => {
             }
         })
 
-
+        console.log('data in req',response?.data?.data);
         return response?.data?.data;
     } catch (error) {
         console.log('fetch workspaceById eoor', error);

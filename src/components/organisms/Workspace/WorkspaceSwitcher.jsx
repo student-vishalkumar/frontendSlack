@@ -2,7 +2,9 @@ import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useFetchWorkspace } from "@/hooks/apis/workspace/useFetchWorkspace";
 import { useGetWorkspaceById } from "@/hooks/apis/workspace/useGetWorkspaceById";
+import { useCurrentWorkspace } from "@/hooks/context/useCurrentWorkspace";
 import { Loader } from "lucide-react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const WorkspaceSwitcher = () => {
@@ -13,7 +15,19 @@ export const WorkspaceSwitcher = () => {
 
     const { isFetching, workspace } = useGetWorkspaceById(workspaceId);
 
+    console.log('ws in swc', workspace, isFetching);
+
     const { workspaces, isFetching: isFetchingWorkspce} = useFetchWorkspace();
+
+    const { setCurrentWorkspace } = useCurrentWorkspace();
+
+    // useEffect(() => {
+    //     if(workspace) {
+    //         console.log('ws in ue', workspace);
+    //         setCurrentWorkspace(workspace);
+    //     }
+    // }, [workspace, setCurrentWorkspace]);
+
     return (
         <div>
             <DropdownMenu>
