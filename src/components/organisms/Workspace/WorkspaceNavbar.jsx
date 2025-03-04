@@ -14,16 +14,20 @@ export const WorkspaceNavbar = () => {
   console.log('worskid', workspaceId);
   const { isFetching, isSuccess, error, workspace } = useGetWorkspaceById(workspaceId);
 
+  console.log('error in nav', isFetching, isSuccess, error, workspace);
   const { currentWorkspace, setCurrentWorkspace } = useCurrentWorkspace();
 
   useEffect(() => {
 
-        if(!isFetching && !isSuccess && error) {
-          if(error.status === 403) {
-            logout();
-            navigate('/auth/signin');
-          }
-        }
+    // console.log('error.status nav', error, isFetching, isSuccess);
+    //     if(true) {
+    //       console.log('error.status', error, isFetching, isSuccess);
+    //       if(error.status === 403) {
+    //         console.log('yes');
+    //         logout();
+    //         navigate('/auth/signin');
+    //       }
+    //     }
         if(workspace) {
             console.log('ws in ue', workspace);
             setCurrentWorkspace(workspace);

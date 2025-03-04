@@ -8,7 +8,7 @@ export const Channel = () => {
     const { channelId } = useParams();
 
     const { isFetching, isError, channelDetails} = useGetChannelById(channelId);
-    console.log('chd', channelDetails);
+    console.log('isftc', isFetching);
     if(isFetching) {
         return (
             <div className='h-full flex flex-col items-center justify-center'>
@@ -27,7 +27,7 @@ export const Channel = () => {
     }
     return (
         <div className='flex flex-col h-full'>
-            <ChannelHeader name={channelDetails?.name}/>
+            <ChannelHeader channel={channelDetails}/>
             <div className='flex-1'/>
             <ChatInput/>
         </div>

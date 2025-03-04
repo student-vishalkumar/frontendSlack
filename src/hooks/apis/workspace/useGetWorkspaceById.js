@@ -12,7 +12,7 @@ export const useGetWorkspaceById = (id) => {
         staleTime: 10000
     })
 
-    console.log('ws in ftc', workspace);
+    console.log('error in ftc', error);
 
     return {
         isFetching,
