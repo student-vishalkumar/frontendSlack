@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { PiTextAa } from "react-icons/pi";
 import { Hint } from "../Hint/Hint";
+import { MdSend } from 'react-icons/md';
 
 export const Editor = ({
   variant = "create",
@@ -96,6 +97,17 @@ export const Editor = ({
             >
               <PiTextAa className="size-4" />
             </Button>
+          </Hint>
+          <Hint label="send message">
+             <Button
+             size="icon-sm"
+             className="ml-auto bg-[#007a6a] hover:bg-[#007a6a]/80 text-white"
+             onClick={() => {
+              onSubmit({body:JSON.stringify(quillRef.current?.getContents()) });
+             }}
+             >
+              <MdSend className='size-4'/>
+             </Button>
           </Hint>
         </div>
       </div>
