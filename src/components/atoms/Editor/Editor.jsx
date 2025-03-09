@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PiTextAa } from "react-icons/pi";
 import { Hint } from "../Hint/Hint";
 import { MdSend } from 'react-icons/md';
+import { ImageIcon } from "lucide-react";
 
 export const Editor = ({
   variant = "create",
@@ -80,40 +81,61 @@ export const Editor = ({
     quill.setContents(defaultValueRef.current);
   }, []);
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-col border border-slate-300 rounded-md overflow-hidden focus-within:shadow-sm focus-within:border-slate-400 bg-white">
-        <div className="h-full ql-custom" ref={containerRef} />
-        <div className="flex px-2 pb-2 z-[5]">
-          <Hint
-          label={toolbarVisible? 'show toolbar': 'hide toolbar'}
-          side='bottom'
-          align='center'
-          >
-            <Button
-              size="icon-sm"
-              variant="ghost"
-              disabeled={false}
-              onClick={toggleToolbar}
-            >
-              <PiTextAa className="size-4" />
-            </Button>
-          </Hint>
-          <Hint label="send message">
-             <Button
-             size="icon-sm"
-             className="ml-auto bg-[#007a6a] hover:bg-[#007a6a]/80 text-white"
-             onClick={() => {
-              onSubmit({body:JSON.stringify(quillRef.current?.getContents()) });
-             }}
+    
+    <div
+             className='flex flex-col'
+         >
+ 
+             <div
+                 className='flex flex-col border border-slate-300 rounded-md overflow-hidden focus-within:shadow-sm focus-within:border-slate-400 bg-white '
              >
-              <MdSend className='size-4'/>
-             </Button>
-          </Hint>
-        </div>
-      </div>
-      <p className="p-2 txt-[10px] text-mutes-foreground flex justify-end">
-        <strong>Shift + Enter</strong> &nbsp; to add a new line
-      </p>
-    </div>
-  );
+                 <div className='h-full ql-custom' ref={containerRef} />
+ 
+                 <div className='flex px-2 pb-2 z-[5]'>
+                     <Hint label={!toolbarVisible ? 'Show toolbar' : 'Hide toolbar'} side='bottom' align='center'>
+                         <Button
+                             size="iconSm"
+                             variant="ghost"
+                             disabled={false}
+                             onClick={toggleToolbar}
+                         >
+                             <PiTextAa className='size-4' />
+                         </Button>
+                     </Hint>
+ 
+                     <Hint label="Image">
+                         <Button
+                             size="iconSm"
+                             variant="ghost"
+                             disabled={false}
+                             onClick={() => {}}
+                         >
+                             <ImageIcon className='size-4' />
+                         </Button>
+                     </Hint>
+ 
+                     <Hint label="Send Message">
+                         <Button
+                             size="iconSm"
+                             className="ml-auto bg-[#007a6a] hover:bg-[#007a6a]/80 text-white"
+                             onClick={() => {
+                                 const messageContent = JSON.stringify(quillRef.current?.getContents());
+                                 onSubmit({ body: messageContent });
+                                 quillRef.current?.setText('');
+                             }}
+                             disabled={false}
+                         >
+                             <MdSend className='size-4' />
+                         </Button>
+                     </Hint>
+                 </div>
+             </div>
+ 
+             <p
+                 className='p-2 text-[10px] text-mutes-foreground flex justify-end'
+             >
+                 <strong>Shift + return</strong> &nbsp; to add a new line
+             </p>
+         </div>
+  )
 };
