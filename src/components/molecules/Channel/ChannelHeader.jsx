@@ -20,7 +20,7 @@ import { useParams } from "react-router-dom";
 
 export const ChannelHeader = ({ channel }) => {
 
-
+  console.log('channel', channel);
   const queryClient = useQueryClient();
   const [rename, setRename] = useState(channel?.name)
 
@@ -29,12 +29,10 @@ export const ChannelHeader = ({ channel }) => {
   const {isPending, updateChannelMutation} = useUpdateChannel(channel?._id);
 
   const {Confirmation, ConfirmDialog} = useConfirmation({title: 'Do you want to update name of channel', message: 'This step can not be undo'});
-
+  
   async function handleFormSubmit(e) {
     e.preventDefault();
     try {
-      console.log('yes')
-      console.log('rename', rename);
       const ok = await Confirmation();
       if(!ok) {
         return;
@@ -48,13 +46,14 @@ export const ChannelHeader = ({ channel }) => {
       throw error;
     }
   }
+  
   return (
     <div>
     <ConfirmDialog/>
       <Dialog>
         <DialogTrigger>
           <Button>
-            <span># {channel?.name}</span>
+            <span># {channel}</span>
             <FaChevronDown className="size-3 ml-2" />
           </Button>
         </DialogTrigger>

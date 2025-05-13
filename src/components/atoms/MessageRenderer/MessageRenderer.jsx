@@ -5,19 +5,24 @@ export const MessageRenderer = ({value}) => {
     const renderedRef = useRef();
     const [isEmpty, setIsEmpty] = useState(false);
 
+    console.log('value body', value);
     useEffect(() => {
-        if(!renderedRef.content){
+        
+        if(!renderedRef.current){
             return;
         }
 
+        
         const quill = new Quill(document.createElement('div'), {
             theme: 'snow'
         });
 
+        console.log('3');
         quill.disable();
 
         const content = JSON.parse(value);
 
+        console.log('content', content);
         quill.setContents(content);
 
         const isContentEmpty = quill.getText().trim().length === 0;

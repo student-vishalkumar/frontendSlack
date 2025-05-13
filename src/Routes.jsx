@@ -24,3 +24,26 @@ export const AppRoutes = () => {
     </Routes>
   );
 };
+
+
+// Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyAhfFqTMbb5X654N2aYV11iRaZGUN9si9g",
+//   authDomain: "imageuploadinslackapp.firebaseapp.com",
+//   projectId: "imageuploadinslackapp",
+//   storageBucket: "imageuploadinslackapp.firebasestorage.app",
+//   messagingSenderId: "387700993602",
+//   appId: "1:387700993602:web:5bcbdb3f718a82fd97c7db",
+//   measurementId: "G-W072CPZ599"
+// };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);

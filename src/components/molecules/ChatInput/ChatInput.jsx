@@ -12,8 +12,6 @@ export const ChatInput = () => {
 
     console.log('crwid', currentWorkspace?._id);
     function handleSubmit({body}) {
-        console.log('body', body);
-        console.log('crwid', currentWorkspace?._id, currentChannel, socket);
         socket?.emit('newMessage',{
             channelId: currentChannel,
             body,
