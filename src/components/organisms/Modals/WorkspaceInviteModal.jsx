@@ -4,15 +4,25 @@ import { useResetJoinCode } from "@/hooks/apis/workspace/useResetJoinCode";
 import { useToast } from "@/hooks/use-toast";
 
 import { CopyIcon, RefreshCcwIcon } from "lucide-react"
+import { useEffect, useState } from "react";
 
 export const WorkspaceInviteModal = ({openInviteModal, setOpenInviteModal, workspaceName, joinCode, workspaceId}) => {
 
     const {toast} = useToast();
 
     const {resetJoinCodeMutation} = useResetJoinCode(workspaceId);
+    
+    const [link, setLink] = useState("");
 
+    useEffect(() => {
+        const org = window.location.origin;
+        setLink(org);
+        console.log("org", org);
+    }, [])
+    
     async function handleCopy() {
-        const inviteLink = `${joinCode}`;
+        console.log('headLink', link);
+        const inviteLink = `${link}/workspaces/join/${workspaceId}`;
 
         await navigator.clipboard.writeText(inviteLink);
 
@@ -22,6 +32,7 @@ export const WorkspaceInviteModal = ({openInviteModal, setOpenInviteModal, works
 
         })
     }
+    
 
     async function handleResetJoinCode() {
         try {

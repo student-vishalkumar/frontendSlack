@@ -6,7 +6,8 @@ export const Message = ({
     authorImage,
     authorName,
     createdAt,
-    body
+    body,
+    image
 }) => {
     return (
         <div className='flex flex-col gap-2 p-1.5 px-5 hover:bg-gray-100/60 group-relative'>
@@ -30,6 +31,7 @@ export const Message = ({
                         </button>
                     </div>
                     <MessageRenderer value={body}/>
+                    <div className="h-35 w-35 rounded-md"><img src={image}/></div>
                 </div>
             </div>
         </div>

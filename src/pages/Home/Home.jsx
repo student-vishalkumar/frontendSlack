@@ -34,7 +34,7 @@ export const Home = ()=> {
         <>
             <div>
                 <div>
-                    <nav className='w-full h-20 bg-pink-500 flex p-2'>
+                    <nav className='w-full h-20 bg-blue-950 flex p-2'>
                         <img className='w-18 h-full  rounded-md ml-20' src={TeamLogo} alt="TeamLogo"/>
 
                         <div className='p-5 text-md text-white ml-20'>Why Team Communication</div>

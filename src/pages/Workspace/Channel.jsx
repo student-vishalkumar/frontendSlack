@@ -88,7 +88,7 @@ import { useQueryClient } from '@tanstack/react-query';
              >
                  {messageList?.map((message) => {
                     console.log('author', message.senderId);
-                     return <Message key={message._id} body={message.body} authorImage={message.senderId?.avatar} authorName={message.senderId?.username} createdAt={message.createdAt}   />;
+                     return <Message key={message._id} body={message.body} image={message.image} authorImage={message.senderId?.avatar} authorName={message.senderId?.username} createdAt={message.createdAt}   />;
                  })}   
              </div> 
                         

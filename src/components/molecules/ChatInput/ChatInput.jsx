@@ -11,10 +11,12 @@ export const ChatInput = () => {
     const {currentWorkspace} = useCurrentWorkspace();
 
     console.log('crwid', currentWorkspace?._id);
-    function handleSubmit({body}) {
+    function handleSubmit({body, image}) {
+        console.log('body at handlesubmit', body, image);
         socket?.emit('newMessage',{
             channelId: currentChannel,
             body,
+            image,
             senderId: auth?.user?._id,
             workspaceId: currentWorkspace?._id,
         }, (data) => {

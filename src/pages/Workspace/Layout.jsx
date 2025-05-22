@@ -8,6 +8,9 @@ import {
 } from "@/components/ui/resizable";
 
 export const WorkspaceLayout = ({ children }) => {
+
+  
+  
   return (
     <div className="h-[100vh]">
       <WorkspaceNavbar />
@@ -19,7 +22,7 @@ export const WorkspaceLayout = ({ children }) => {
           <ResizablePanel
           defaultSize={20}
           minSize={11}
-          className='bg-slack-medium'
+          className='bg-blue-950'
           >
             <WorkspacePanel/>
           </ResizablePanel>

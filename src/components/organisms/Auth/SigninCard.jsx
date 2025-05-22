@@ -29,7 +29,7 @@ export const SigninCard = ({
         <CardTitle>SignIn</CardTitle>
         <CardDescription>Sign in access to your account</CardDescription>
         {validationError && (
-          <div className="bg-destructive/15 p-4 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
+          <div className="bg-blue-950 p-4 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
             <TriangleAlert className="size-5" />
             <p>{validationError.message}</p>
           </div>

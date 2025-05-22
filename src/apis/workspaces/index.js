@@ -133,3 +133,19 @@ export const joinWorkspaceRequest = async({workspaceId, joinCode, token}) => {
         throw error;
     }
 }
+
+export const removeMemberFromWorkspace = async({workspaceId, memberId, token}) => {
+    try{
+        const response = await axios.patch(`/workspaces/removeMember`, {
+            workspaceId, memberId
+        },{
+            headers: {
+                'x-access-token': token
+            }
+        });
+        
+        return response?.data?.data;
+    } catch(error) {
+        throw error;
+    }
+}

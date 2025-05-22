@@ -30,21 +30,21 @@ export const SignupCard = ({
         <CardTitle>Sign Up</CardTitle>
         <CardDescription>Please SignUp to Create Account</CardDescription>
         {validationError && (
-          <div className="bg-destructive/15 p-4 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
+          <div className="bg-blue-950 p-4 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
             <TriangleAlert className="size-5" />
             <p>{validationError.message}</p>
           </div>
         )}
 
         {error && (
-          <div className="bg-destructive/15 p-4 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
+          <div className="bg-blue-950 p-4 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
             <TriangleAlert className="size-5" />
             <p>{error.message}</p>
           </div>
         )}
 
         {isSuccess && (
-          <div className="bg-primary/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-primary mb-5">
+          <div className="bg-blue-950 p-3 rounded-md flex items-center gap-x-2 text-sm text-primary mb-5">
             <FaCheck className="size-5" />
             <p>
               Successfully signed up. You will be redirected to the login page

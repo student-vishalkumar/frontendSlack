@@ -44,7 +44,7 @@ export const WorkspaceNavbar = () => {
   
 
   return (
-    <nav className="flex items-center justify-center h-10 p-1.5 bg-slack-dark">
+    <nav className="flex items-center justify-center h-10 p-1.5 bg-blue-950">
       <div className="flex-1" />
       <div>
         <Button
