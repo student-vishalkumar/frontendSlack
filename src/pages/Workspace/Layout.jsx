@@ -1,6 +1,6 @@
 import { WorkspaceNavbar } from "@/components/organisms/Workspace/WorkspaceNavbar";
 import { WorkspacePanel } from "@/components/organisms/Workspace/WorkspacePanel";
-import { WorkspaceSidebar } from "@/components/organisms/Workspace/WorkspaceSideBar";
+import { WorkspaceSidebar } from "@/components/organisms/Workspace/WorkspaceSidebar";
 import {
   ResizableHandle,
   ResizablePanel,
